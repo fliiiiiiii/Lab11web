@@ -1,4 +1,4 @@
-**Project Title — LAB10_PHP_OOP**
+**Project Title — LAB11_PHP_OOP**
 ### *Rafli Anugrah Ramadhan*
 
 <p align="left">
@@ -205,7 +205,7 @@ $data = $db->query("SELECT * FROM artikel");
         <td><?= $row['id'] ?></td>
         <td><?= $row['judul'] ?></td>
         <td>
-            <a href="/lab11_php_oop/artikel/ubah?id=<?= $row['id'] ?>">Ubah</a>
+            <a href="/Lab11Web/artikel/ubah?id=<?= $row['id'] ?>">Ubah</a>
         </td>
     </tr>
     <?php } ?>
@@ -248,21 +248,19 @@ $db = new Database();
 $id = $_GET['id'];
 $old = $db->get("artikel", "id=$id");
 
-$form = new Form("/lab11_php_oop/artikel/ubah?id=$id", "Update");
+$form = new Form("/Lab11Web/artikel/ubah?id=$id", "Update");
 
 if ($_POST) {
     $data = [
         'judul' => $_POST['judul'],
         'isi' => $_POST['isi']
     ];
-
     $db->update("artikel", $data, "id=$id");
     echo "<p style='color:green'>Artikel berhasil diperbarui!</p>";
 }
 ?>
 
 <h2>Ubah Artikel</h2>
-
 <?php
 $form->addField("judul", "Judul", "text");
 $form->addField("isi", "Isi", "textarea");
